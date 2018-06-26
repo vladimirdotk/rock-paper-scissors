@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import NewGame from './NewGame';
+import Play from './Play';
+import GameOver from './GameOver';
 
-const STATUS_STOPPED = 0;
+const STATUS_NEW = 0;
 const STATUS_PLAYING = 1;
+const STATUS_GAME_OVER = 2;
 
 const RESULT_WIN = "You win";
 const RESULT_LOOSE = "You loose";
@@ -16,8 +20,10 @@ const CHOICES = ['rock', 'paper', 'scissors'];
 class Game extends Component {
 
   state = {
-    status: STATUS_STOPPED,
-    previousResult: null
+    status: STATUS_NEW,
+    result: null,
+    playerChoice: null,
+    computerChoice: null
   };
 
   handleStartBtn = () => {
@@ -27,17 +33,22 @@ class Game extends Component {
   }
 
   handleChoiceBtn = (playerChoice) => {
-    const compChoice = this.getComputerChoice();
-    const gameResult = this.getGameResult(playerChoice, compChoice);
-
-    alert(
-      `You choose ${CHOICES[playerChoice]}, computer choose ${CHOICES[compChoice]}.
-      Result: ${gameResult}!`
-    );  
+    const computerChoice = this.getComputerChoice();
+    const gameResult = this.getGameResult(playerChoice, computerChoice);
 
     this.setState({
-      status: STATUS_STOPPED,
-      previousResult: gameResult
+      status: STATUS_GAME_OVER,
+      result: gameResult,
+      playerChoice: playerChoice,
+      computerChoice: computerChoice
+    });
+  }
+
+  handleGameOverBtn = () => {
+    this.setState({
+      status: STATUS_NEW,
+      playerChoice: null,
+      computerChoice: null
     });
   }
 
@@ -63,44 +74,37 @@ class Game extends Component {
   }
 
   renderPreviousResult = () => {
-    if (this.state.previousResult) {
+    if (this.state.result && this.state.status !== STATUS_GAME_OVER) {
       return (
         <div style={styles.twentyFromTop}>
-          Your previous result: {this.state.previousResult}
+          Previous result: {this.state.result}
         </div>
       );
     }
   }
 
-  renderPlaying = () => {
-    return(
-      <div style={styles.twentyFromTop}>
-        Make your choice:
-        <br/>
-        <br/>
-        <button onClick={() => this.handleChoiceBtn(ROCK)}>Rock</button>
-        <br/>
-        <button onClick={() => this.handleChoiceBtn(PAPER)}>Paper</button>
-        <br/>
-        <button onClick={() => this.handleChoiceBtn(SCISSORS)}>Scissors</button>
-      </div>
-    );
-  }
-
-  renderStoppped = () => {
-    return (
-      <button style={styles.twentyFromTop} onClick={this.handleStartBtn}>
-        Start
-      </button>
-    );
-  }
-
   getMainRenderData = () => {
-    if (this.state.status === STATUS_STOPPED) {
-      return this.renderStoppped();
+    if (this.state.status === STATUS_NEW) {
+      return (
+        <NewGame handleStartBtn={this.handleStartBtn}/>
+      );
     }
+
     if (this.state.status === STATUS_PLAYING) {
-      return this.renderPlaying();
+      return (
+        <Play handleChoiceBtn={this.handleChoiceBtn}/>
+      );
+    }
+
+    if (this.state.status === STATUS_GAME_OVER) {
+      return (
+        <GameOver
+          playerChoice={this.state.playerChoice}
+          computerChoice={this.state.computerChoice}
+          result={this.state.result}
+          handleGameOverBtn={this.handleGameOverBtn}
+        />
+      );
     }
   }
 
