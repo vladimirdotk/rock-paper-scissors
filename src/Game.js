@@ -76,7 +76,7 @@ class Game extends Component {
   renderPreviousResult = () => {
     if (this.state.result && this.state.status !== STATUS_GAME_OVER) {
       return (
-        <div style={styles.twentyFromTop}>
+        <div className="result">
           Previous result: {this.state.result}
         </div>
       );
@@ -119,9 +119,3 @@ class Game extends Component {
 }
 
 export default Game;
-
-const styles = {
-  twentyFromTop: {
-    marginTop: "20px"
-  }
-};
