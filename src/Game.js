@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import NewGame from './NewGame';
 import Play from './Play';
 import GameOver from './GameOver';
+import Result from './Result'
 
 const STATUS_NEW = 0;
 const STATUS_PLAYING = 1;
@@ -76,9 +77,9 @@ class Game extends Component {
   renderPreviousResult = () => {
     if (this.state.result && this.state.status !== STATUS_GAME_OVER) {
       return (
-        <div className="result">
+        <Result>
           Previous result: {this.state.result}
-        </div>
+        </Result>
       );
     }
   }
