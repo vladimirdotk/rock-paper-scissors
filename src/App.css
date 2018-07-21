@@ -1,27 +1,75 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  padding: 20px;
+#root {
   color: white;
 }
 
+.App {
+  text-align: center;
+  display: block;
+}
+.App-header {
+  padding: 20px;
+}
 .App-title {
-  font-size: 1.5em;
+  font-size: 1.4rem;
+  margin-top: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1em;
+  text-shadow: 0 1px 2px black;
+  font-family: "Helvetica Neue";
 }
-
-.App-intro {
-  font-size: large;
+.Start-button {
+  color: white;
+  font-size: 1.2rem;
+  font-family: 'Lato';
+  text-transform: uppercase;
+  letter-spacing: 1em;
+  text-decoration: none;
+  padding: .8em 1em calc(.8em + 3px);
+  border-radius: 15px;
+  background: rgba(84, 235, 223, 0.1);
+  transition: 0.2s;
+  border: 0;
+  margin-top: 5%;
+  width: 20rem;
+  height: 5rem;
 }
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.Start-button:hover {
+  background: rgba(167, 52, 37, 0.1);
+}
+.Play-body {
+  text-transform: uppercase;
+  letter-spacing: 0.8em;
+}
+.row {
+  margin-top: 2%;
+}
+.block {
+  color: white;
+  display: inline-block;
+  width: 5rem;
+  height: 5rem;
+  margin: 1rem;
+  background: rgba(84, 235, 223, 0.1);
+  cursor: pointer;
+  border-radius: 50%;
+  border: 0;
+}
+.block:hover {
+  background: rgba(167, 52, 37, 0.1);
+}
+.result {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6em;
+  margin-top: 10px;
+}
+.restart {
+  color: white;
+  display: inline-block;
+  margin: 40px;
+  width: 70px;
+  height: 40px;
+  background: rgba(84, 235, 223, 0.1);
+  cursor: pointer;
+  border: 0;
 }
