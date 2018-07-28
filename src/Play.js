@@ -30,8 +30,8 @@ const ButtonBlock = styled.button`
   }
 `
 const Img = styled.img`
-    width: 70;
-    height: 70;
+    width: 70px;
+    height: 70px;
 `
 
 const Play = ({handleChoiceBtn}) => {
@@ -43,10 +43,10 @@ const Play = ({handleChoiceBtn}) => {
                     <Img src={require("./pics/rock.png")}/>
                 </ButtonBlock>
                 <ButtonBlock onClick={() => handleChoiceBtn(PAPER)}>
-                    <img style={{width: 70, height: 70}} src={require("./pics/paper.png")}/>
+                    <Img src={require("./pics/paper.png")}/>
                 </ButtonBlock>
                 <ButtonBlock onClick={() => handleChoiceBtn(SCISSORS)}>
-                    <img style={{width: 70, height: 70}} src={require("./pics/scissors.png")}/>
+                    <Img style={{width: 70, height: 70}} src={require("./pics/scissors.png")}/>
                 </ButtonBlock>
             </Row>
         </PlayBody>
