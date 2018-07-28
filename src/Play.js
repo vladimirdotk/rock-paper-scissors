@@ -29,15 +29,25 @@ const ButtonBlock = styled.button`
     background: rgba(167, 52, 37, 0.1);
   }
 `
+const Img = styled.img`
+    width: 70;
+    height: 70;
+`
 
 const Play = ({handleChoiceBtn}) => {
     return (
         <PlayBody>
             Make your choice:
             <Row>
-                <ButtonBlock onClick={() => handleChoiceBtn(ROCK)}>Rock</ButtonBlock>
-                <ButtonBlock onClick={() => handleChoiceBtn(PAPER)}>Paper</ButtonBlock>
-                <ButtonBlock onClick={() => handleChoiceBtn(SCISSORS)}>Scissors</ButtonBlock>
+                <ButtonBlock onClick={() => handleChoiceBtn(ROCK)}>
+                    <Img src={require("./pics/rock.png")}/>
+                </ButtonBlock>
+                <ButtonBlock onClick={() => handleChoiceBtn(PAPER)}>
+                    <img style={{width: 70, height: 70}} src={require("./pics/paper.png")}/>
+                </ButtonBlock>
+                <ButtonBlock onClick={() => handleChoiceBtn(SCISSORS)}>
+                    <img style={{width: 70, height: 70}} src={require("./pics/scissors.png")}/>
+                </ButtonBlock>
             </Row>
         </PlayBody>
     );

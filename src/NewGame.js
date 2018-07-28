@@ -21,11 +21,14 @@ const StartButton = styled.button`
     background: rgba(167, 52, 37, 0.1);
   }
 `
+const Text = styled.span`
+     margin-right:-1em;
+`
 
 const NewGame = ({handleStartBtn}) => {
   return (
     <StartButton onClick={handleStartBtn}>
-        Start
+        <Text>Start</Text>
     </StartButton>
   );
 }
